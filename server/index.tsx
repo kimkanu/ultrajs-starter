@@ -1,17 +1,24 @@
-import { serve } from "https://deno.land/std@0.153.0/http/server.ts";
+import { serve } from "$std/http/server.ts";
+import createApiRouter from "$server/api.ts";
 import { createServer } from "ultra/server.ts";
 import { Router } from "wouter";
 import staticLocationHook from "wouter/static-location";
-import "./twind.ts";
-import App from "./src/app.tsx";
-import { SearchParamsProvider } from "./src/context/SearchParams.tsx";
+import "../twind.ts";
+import App from "../src/app.tsx";
+import { SearchParamsProvider } from "../src/context/SearchParams.tsx";
 
 const server = await createServer({
   importMapPath: Deno.env.get("ULTRA_MODE") === "development"
-    ? import.meta.resolve("./importMap.dev.json")
-    : import.meta.resolve("./importMap.json"),
-  browserEntrypoint: import.meta.resolve("./client.tsx"),
+    ? import.meta.resolve("../importMap.dev.json")
+    : import.meta.resolve("../importMap.json"),
+  browserEntrypoint: import.meta.resolve("../client.tsx"),
 });
+
+/**
+ * Create our API router
+ */
+const api = await createApiRouter();
+server.route("/api", api);
 
 server.get("*", async (context) => {
   /**
