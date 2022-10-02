@@ -1,10 +1,13 @@
+import { tw } from "twind";
 import type { FunctionComponent } from "react";
 
 const HomePage: FunctionComponent = () => {
   return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
+    <main className={tw`w-full h-full`}>
+      <div className={tw`w-full h-full grid place-items-center`}>
+        <h1>Home Page</h1>
+      </div>
+    </main>
   );
 };
 

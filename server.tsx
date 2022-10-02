@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.153.0/http/server.ts";
 import { createServer } from "ultra/server.ts";
 import { Router } from "wouter";
 import staticLocationHook from "wouter/static-location";
+import "./twind.ts";
 import App from "./src/app.tsx";
 import { SearchParamsProvider } from "./src/context/SearchParams.tsx";
 
