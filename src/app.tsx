@@ -1,38 +1,31 @@
-import useAsset from "ultra/hooks/use-asset.js";
+import { Link, Route, Switch } from "wouter";
+import HomePage from "./pages/Home.tsx";
+import { useSearchParams } from "./context/SearchParams.tsx";
 
 export default function App() {
-  console.log("Hello world!");
+  const searchParams = useSearchParams();
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <title>Ultra</title>
+        <title>with-wouter</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="shortcut icon" href={useAsset("./favicon.ico")} />
-        <link rel="preload" as="style" href={useAsset("./style.css")} />
-        <link rel="stylesheet" href={useAsset("./style.css")} />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body>
+        <nav>
+          <Link to="/">Home</Link>
+        </nav>
         <main>
-          <h1>
-            <span></span>__<span></span>
-          </h1>
-          <p>
-            Welcome to{" "}
-            <strong>Ultra</strong>. This is a barebones starter for your web
-            app.
-          </p>
-          <p>
-            Take{" "}
-            <a
-              href="https://ultrajs.dev/docs"
-              target="_blank"
-            >
-              this
-            </a>, you may need it where you are going. It will show you how to
-            customise your routing, data fetching, and styling with popular
-            libraries.
-          </p>
+          <div>Search params: {searchParams.toString()}</div>
+          <Switch>
+            <Route path="/">
+              <HomePage />
+            </Route>
+            <Route>
+              404
+            </Route>
+          </Switch>
         </main>
       </body>
     </html>

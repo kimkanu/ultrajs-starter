@@ -5,6 +5,8 @@
     "react-dom": "https://esm.sh/react-dom@18.2.0",
     "react-dom/server": "https://esm.sh/react-dom@18.2.0/server?dev",
     "react-dom/client": "https://esm.sh/react-dom@18.2.0/client?dev",
-    "ultra/": "https://deno.land/x/ultra@v2.0.0-beta.7/"
+    "ultra/": "https://deno.land/x/ultra@v2.0.0-beta.7/",
+    "wouter": "https://esm.sh/wouter@2.8.0-alpha.2?external=react",
+    "wouter/static-location": "https://esm.sh/wouter@2.8.0-alpha.2/static-location?external=react"
   }
 }
