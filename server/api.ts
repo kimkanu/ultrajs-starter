@@ -83,7 +83,6 @@ export default async function createApiRouter() {
       return getWildcardIndex(sDivided) - getWildcardIndex(rDivided);
     })
   );
-  console.log(routes, import.meta.resolve("./"));
 
   routes.forEach(([route, method, handler]) => {
     router[method](route, handler);
