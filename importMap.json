@@ -9,9 +9,12 @@
     "react-dom/client": "https://esm.sh/react-dom@18.2.0/client?dev",
     "ultra/": "https://deno.land/x/ultra@v2.0.0-beta.7/",
     "hono": "https://deno.land/x/hono@v2.1.4/hono.ts",
-    "wouter": "https://esm.sh/wouter@2.8.0-alpha.2?external=react",
-    "wouter/static-location": "https://esm.sh/wouter@2.8.0-alpha.2/static-location?external=react",
+    "wouter": "https://esm.sh/wouter@2.8.0-alpha.2?external=react&dev",
+    "wouter/static-location": "https://esm.sh/wouter@2.8.0-alpha.2/static-location?external=react&dev",
     "twind": "https://esm.sh/twind@0.16.17",
-    "twind/sheets": "https://esm.sh/twind@0.16.17/sheets"
+    "twind/sheets": "https://esm.sh/twind@0.16.17/sheets",
+    "jotai": "https://esm.sh/jotai@1.7.2?external=react",
+    "nanoid": "https://esm.sh/nanoid@4.0.0",
+    "react-use-websocket": "https://esm.sh/react-use-websocket@4.2.0?external=react"
   }
 }

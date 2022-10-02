@@ -13,7 +13,7 @@ interface Book {
 
 const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => (
   <main className={tw`w-full h-full`}>
-    <div className={tw`w-full h-full flex flex-col justify-center items-center`}>
+    <div className={tw`flex flex-col items-center justify-center w-full h-full`}>
       {children}
     </div>
   </main>

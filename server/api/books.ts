@@ -1,8 +1,8 @@
 import { Handler } from "hono";
-import state from "$server/state.ts";
+import global from "$server/global.ts";
 
 const handler: Handler = (context) => {
-  return context.json(state.books);
+  return context.json(global.state.books);
 };
 
 export default handler;

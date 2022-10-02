@@ -1,8 +1,11 @@
 import { serve } from "$std/http/server.ts";
 import createApiRouter from "$server/api.ts";
+import global from "$server/global.ts";
+import Socket from "$server/socket.ts";
 import { createServer } from "ultra/server.ts";
 import { Router } from "wouter";
 import staticLocationHook from "wouter/static-location";
+import { nanoid } from "nanoid";
 import "../twind.ts";
 import App from "../src/app.tsx";
 import { SearchParamsProvider } from "../src/context/SearchParams.tsx";
@@ -21,6 +24,34 @@ const api = await createApiRouter();
 server.route("/api", api);
 
 server.get("*", async (context) => {
+  /**
+   * Websocket handling
+   */
+  if (context.req.headers.get("upgrade") === "websocket") {
+    const { socket: raw, response } = Deno.upgradeWebSocket(context.req);
+
+    const id = (() => {
+      while (true) {
+        const id = nanoid(8);
+        if (!global.sockets.has(id)) return id;
+      }
+    })();
+
+    const socket = new Socket(id, raw);
+
+    socket.addEventListener("open", () => {
+      socket.send("init", { id });
+    });
+
+    socket.addEventListener("close", () => {
+      global.sockets.delete(id);
+    });
+
+    global.sockets.set(id, socket);
+
+    return response;
+  }
+
   /**
    * Render the request
    */
